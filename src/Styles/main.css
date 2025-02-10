@@ -4,7 +4,7 @@ body{
     align-items: center;
     min-width: 100vh;
     background-color: #fc1e8a;
-    padding: 30px;
+    user-select: none;
 }
 
 .container{
@@ -59,9 +59,32 @@ h2{
 .item{
     position: relative;
     width: 100px;
-    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fff;
+
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+}
+
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen{
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after,
+.boxMatch::after{
+    transform: rotateY(180deg);
 }
